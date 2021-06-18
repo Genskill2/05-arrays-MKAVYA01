@@ -65,6 +65,24 @@ float average(int z[], int no) {
      }
     return result;
 }
+int factors(int n, int ret[]){
+ int count = 0;
+ for(int i = 2;i < n;i++){
+     if (n%i == 0){
+       ret[count] = i;
+       count++;
+       n = n/i;
+     }else{
+     i++;}
+     if (n==i||n==1){
+      ret[count] = i;
+      count++;
+      break;
+     }
+     }
+ return count;
+}
+
 
 
 
