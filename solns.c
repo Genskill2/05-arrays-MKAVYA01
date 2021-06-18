@@ -47,7 +47,7 @@ float average(int z[], int no) {
     }
     int count = 1;
     int store = 0;
-    int result;
+    int result = z[no-1];
     for(int i = 1;i < no;i++){
         int j = i-1; 
         if(z[i] != z[j]){
