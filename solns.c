@@ -1,28 +1,71 @@
 /* Enter your solutions in this file */
 #include <stdio.h>
 
-int max(int x[], int y) {
-  int larger = 0;
-  for(int i = 0;i < y; i++){
-    if(x[i] > x[i+1]) {
-      larger = x[i];
-      x[i] = x[i+1];
-      x[i+1] = larger;
+int max(int z[], int no) {
+    int temp = 0;
+    for(int i = 1;i < no;i++){
+        int j =i -1;
+        if(z[i] < z[j]) {
+            temp = z[j];
+            z[j] = z[i];
+            z[i] = temp;
+        }
     }
-  }
-  return x[y-1];
+return z[no-1];
 }
-int min(int x[], int y) {
-  int smaller = 0;
-  for(int i = 0;i < y; i++){
-    if(x[i] < x[i+1]) {
-      smaller = x[i];
-      x[i] = x[i+1];
-      x[i+1] = smaller;
+int min(int z[], int no) {
+    int temp = 0;
+    for(int i = 1;i < no;i++){
+        int j = i-1;
+        if(z[i] > z[j]){
+            temp = z[j];
+            z[j] = z[i];
+            z[i] = temp;
+        }
     }
-  }
-  return x[0];
+return z[no-1];
 }
+float average(int z[], int no) {
+     float sum = 0.0;
+     for(int i = 0;i < no;i++){
+         sum = sum + z[i];
+     }
+     float avg = sum / no;
+     return avg;
+ }
+ int mode(int z[], int no){
+    int temp = 0;
+    for(int k = 0;k < no;k++){
+        for(int i = 1;i < no;i++){
+            int j = i-1;
+            if(z[i] < z[j]){
+                temp = z[j];
+                z[j] = z[i];
+                z[i] = temp;
+            }
+        }
+    }
+    int count = 1;
+    int store = 0;
+    int result;
+    for(int i = 1;i < no;i++){
+        int j = i-1; 
+        if(z[i] != z[j]){
+            count = 1;
+        }
+        else if(count >= store){
+            count = count + 1;
+            store = count;
+            result = z[j];
+        }
+        else{
+            count = count + 1;
+        }
+
+     }
+    return result;
+}
+
 
 
 
